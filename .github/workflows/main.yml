@@ -22,7 +22,6 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  # https://flet.dev/docs/publish#versioning
   BUILD_NUMBER: 1
   BUILD_VERSION: 1.0.0
   PYTHON_VERSION: 3.12.2
@@ -53,9 +52,8 @@ jobs:
 
     - name: Flet Build Web
       run: |
-        echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}, USER: ${GITHUB_REPOSITORY%\\*}, PROJECT_BASE_URL: ${GITHUB_REPOSITORY#*/}"
         flutter config --no-analytics
-        flutter build web --base-url %PROJECT_BASE_URL% --route-url-strategy hash
+        flutter build web --release  # Removed unsupported --base-url option
 
     - name: Upload Artifact
       uses: actions/upload-pages-artifact@v3
