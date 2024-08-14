@@ -153,3 +153,5 @@ def bert_question_answer_model3(question, passage, max_len=500):
     return answer
 
 
+if __name__ == '__main__':
+    app.run(debug=True)
